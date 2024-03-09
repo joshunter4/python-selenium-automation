@@ -25,11 +25,10 @@ def verify_search_results_correct(context):
 @when('Click on Cart icon')
 def click_cart(context):
     context.driver.find_element(By.CSS_SELECTOR, "[data-test='@web/CartLink']").click()
-
+    sleep(6)
 
 @then("Verify 'Your cart is empty' message is shown")
 def verify_cart_empty_message(context):
     actual_text = context.driver.find_element(By.CSS_SELECTOR, "h1[class*='StyledHeading']").text
     assert 'Your cart is empty' == actual_text, f"Expected 'Your cart is empty' but got {actual_text}"
-    sleep(6)
     print('Test case passed')
