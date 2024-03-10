@@ -1,14 +1,12 @@
 from selenium.webdriver.common.by import By
 from behave import given, when, then
-from time import sleep
 
 
-@given('Open Target Circle main page')
-def open_target_circle_main(context):
-    context.driver.get('https://www.target.com/circle')
+@given('Open Circle page')
+def open_circle_page(context):
+    context.app.circle_page.open_circle()
 
 
-@then('Verify {expected_num} benefit boxes')
-def verify_num_of_benefit_boxes(context, expected_num):
-    context.driver.find_element(By.CSS_SELECTOR, "[class*='BenefitCard-sc']")
-    print('Test case passed')
+@then('Verify that clicking though Circle tabs works')
+def verify_can_click_thru_tabs(context):
+    context.app.circle_page.verify_can_click_thru_tabs()
